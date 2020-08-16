@@ -17,12 +17,8 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Playfair Display`,
-            variants: [`700`, `800`]
-          },
-          {
-            family: `Open Sans`,
-            variants: [`400`, `600`]
+            family: `Alata`,
+            variants: [`400`]
           },
         ],
       },

@@ -3,9 +3,13 @@ import Img from "gatsby-image"
 import { graphql } from "gatsby"
 
 const Home = ({ data }) => {
-  console.log(data)
+  const style = {
+    fontFamily: "Alata",
+    textAlign: "center",
+  }
   return (
-    <div>
+    <div style={style}>
+      <h1>Mugs Collection</h1>
       {data.allImageSharp.edges.map((el, i) => (
         <Img
           fixed={el.node.fixed}
