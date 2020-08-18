@@ -18,7 +18,7 @@ module.exports = {
         fonts: [
           {
             family: `Alata`,
-            variants: [`400`]
+            variants: [`400`],
           },
         ],
       },
@@ -31,5 +31,5 @@ module.exports = {
         path: `${__dirname}/src/images/`,
       },
     },
-  ]
+  ],
 }
