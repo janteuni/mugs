@@ -9,7 +9,7 @@ module.exports = {
   siteMetadata: {
     title: `Mugs selection`,
   },
-  pathPrefix: process.env.PATH_PREFIX || "/mugs-selection",
+  pathPrefix: process.env.PATH_PREFIX || "/mugs",
   plugins: [
     `gatsby-transformer-remark`,
     {
