@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
+import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
@@ -34,7 +35,19 @@ const Home = ({ data }) => {
     color: "#a7a4a4",
   }
 
-  console.log(imgs)
+  const vote = name => {
+    trackCustomEvent({
+      // string - required - The object that was interacted with (e.g.video)
+      category: "Image",
+      // string - required - Type of interaction (e.g. 'play')
+      action: "Click",
+      // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
+      label: "Vote",
+      // number - optional - Numeric value associated with the event. (e.g. A product ID)
+      value: parseInt(name.split(".")[0]),
+    })
+    setStep(step + 1)
+  }
 
   return (
     <div style={container}>
@@ -61,10 +74,9 @@ const Home = ({ data }) => {
           .filter((el, i) => i >= (step - 1) * 4 && i < step * 4)
           .map((el, i) => (
             <div
-              className={el.node.fixed.src.split("/").pop()}
               key={i}
               style={imgContainer}
-              onClick={() => setStep(step + 1)}
+              onClick={() => vote(el.node.fixed.src.split("/").pop())}
               role="button"
               tabIndex={0}
             >
