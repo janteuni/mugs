@@ -3,7 +3,6 @@ import Img from "gatsby-image"
 import { graphql } from "gatsby"
 
 function shuffle(a) {
-  console.log("shuffle")
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[a[i], a[j]] = [a[j], a[i]]
@@ -34,7 +33,9 @@ const Home = ({ data }) => {
   const h2 = {
     color: "#a7a4a4",
   }
-  console.log(step)
+
+  console.log(imgs)
+
   return (
     <div style={container}>
       <h1>Mugs Collection</h1>
@@ -59,7 +60,14 @@ const Home = ({ data }) => {
         imgs
           .filter((el, i) => i >= (step - 1) * 4 && i < step * 4)
           .map((el, i) => (
-            <div key={i} style={imgContainer} onClick={() => setStep(step + 1)}>
+            <div
+              className={el.node.fixed.src.split("/").pop()}
+              key={i}
+              style={imgContainer}
+              onClick={() => setStep(step + 1)}
+              role="button"
+              tabIndex={0}
+            >
               <Img fixed={el.node.fixed} />
             </div>
           ))}
