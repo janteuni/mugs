@@ -36,6 +36,7 @@ const Home = ({ data }) => {
   }
 
   const vote = name => {
+    console.log(`vote for ${parseInt(name.split(".")[0])}`)
     trackCustomEvent({
       // string - required - The object that was interacted with (e.g.video)
       category: "Image",
@@ -45,6 +46,7 @@ const Home = ({ data }) => {
       label: "Vote",
       // number - optional - Numeric value associated with the event. (e.g. A product ID)
       value: parseInt(name.split(".")[0]),
+      hitCallback: () => console.log("success"),
     })
     setStep(step + 1)
   }
