@@ -36,16 +36,14 @@ const Home = ({ data }) => {
   }
 
   const vote = name => {
-    console.log(`vote for ${parseInt(name.split(".")[0])}`)
+    console.log(`vote for ${name.split(".")[0]}`)
     trackCustomEvent({
       // string - required - The object that was interacted with (e.g.video)
       category: "Image",
       // string - required - Type of interaction (e.g. 'play')
       action: "Click",
       // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
-      label: "Vote",
-      // number - optional - Numeric value associated with the event. (e.g. A product ID)
-      value: parseInt(name.split(".")[0]),
+      label: name.split(".")[0],
       hitCallback: () => console.log("success"),
     })
     setStep(step + 1)
