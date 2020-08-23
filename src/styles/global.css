@@ -1,4 +1,129 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Alata";
+}
+
+body, #gatsby-focus-wrapper, #___gatsby {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-direction: normal;
+  -moz-box-orient: vertical;
+  display: flex;
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-column {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-direction: normal;
+  -moz-box-orient: vertical;
+}
+
+.flex-grow {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.flex-center {
+  justify-content: center;
+  -webkit-box-pack : justify;
+  -moz-box-pack : justify;
+  -ms-flex-pack : justify;
+  -webkit-justify-content : center;
+}
+
+.align-center {
+  align-items: center;
+  -webkit-box-align : center;
+}
+
+.container {
+  text-align: center;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .gatsby-image-wrapper {
   margin: 6px;
 }
 
+img:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+  border: 1px solid rgba(0,0,0, .5);
+}
+
+img:active {
+  filter: brightness(0.7);
+}
+
+iframe {
+  width: 640px;
+  height: 450px;
+}
+
+@media screen and (max-width: 445px) {
+  .gatsby-image-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  iframe {
+    height: 600px;
+  }
+}
+
+button {
+  cursor: pointer;
+  background-color: #dcbaac;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #c99f8f;
+  font-family: "Alata";
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #c99f8f;
+}
+
+button:active {
+  border-color: #a57866;
+}

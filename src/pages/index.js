@@ -15,28 +15,27 @@ const Home = ({ data }) => {
   const [step, setStep] = useState(0)
   const [imgs, setImgs] = useState([...data.allImageSharp.edges])
 
-  const container = {
-    fontFamily: "Alata",
-    textAlign: "center",
-    maxWidth: "1000px",
-    marginLeft: "auto",
-    marginRight: "auto",
-  }
-
   const imgContainer = {
     position: "relative",
     overflow: "hidden",
     display: "inline-block",
-    width: "430px",
-    height: "430px",
+    maxWidth: "430px",
+    maxHeight: "430px",
+    width: "100%",
   }
 
   const h2 = {
     color: "#a7a4a4",
+    maxWidth: "720px",
+    padding: "12px",
+  }
+
+  const h1 = {
+    marginTop: "12px",
+    padding: "12px",
   }
 
   const vote = name => {
-    console.log(`vote for ${name.split(".")[0]}`)
     trackCustomEvent({
       // string - required - The object that was interacted with (e.g.video)
       category: "Image",
@@ -44,19 +43,20 @@ const Home = ({ data }) => {
       action: "Click",
       // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
       label: name.split(".")[0],
-      hitCallback: () => console.log("success"),
     })
     setStep(step + 1)
   }
 
   return (
-    <div style={container}>
-      <h1>Mugs Collection</h1>
+    <div className="container full-height flex flex-column">
+      <h1 style={h1}>Mugs Collection</h1>
       {step === 0 && (
-        <div>
+        <div className="flex flex-column flex-grow flex-center align-center">
           <h2 style={h2}>
+            {"Votez pour votre tasse préférée en cliquant sur l'image."}
+            <br />
             {
-              "Votez pour votre tasse préférée en cliquant sur l'image pour la sélectionner.<br />Les tasses ayant recus le plus de vote seront fabriquées en série et vous pourrez les commander en ligne :)"
+              "Les tasses ayant reçus le plus de votes seront fabriquées en série et vous pourrez les commander en ligne :) "
             }
           </h2>
           <button
@@ -65,24 +65,50 @@ const Home = ({ data }) => {
               setStep(step + 1)
             }}
           >
-            Go
+            {"C'est parti !"}
           </button>
         </div>
       )}
-      {step > 0 &&
-        imgs
-          .filter((el, i) => i >= (step - 1) * 4 && i < step * 4)
-          .map((el, i) => (
-            <div
-              key={i}
-              style={imgContainer}
-              onClick={() => vote(el.node.fixed.src.split("/").pop())}
-              role="button"
-              tabIndex={0}
-            >
-              <Img fixed={el.node.fixed} />
-            </div>
-          ))}
+      {step > 0 && step < 11 && (
+        <div>
+          {imgs
+            .filter((el, i) => i >= (step - 1) * 4 && i < step * 4)
+            .map((el, i) => (
+              <div
+                key={i}
+                style={imgContainer}
+                onClick={() => vote(el.node.fluid.src.split("/").pop())}
+                role="button"
+                tabIndex={0}
+              >
+                <Img fluid={el.node.fluid} />
+              </div>
+            ))}
+        </div>
+      )}
+      {step === 11 && (
+        <div className="flex flex-column flex-grow flex-center align-center">
+          <h2 style={h2}>
+            {"Merci beaucoup :)"}
+            <br />
+            {
+              "Pour être tenu au courant lorsque les tasses seront disponibles, inscrivez-vous avec votre email ici:"
+            }
+          </h2>
+          <iframe
+            src="https://d8cb2fc7.sibforms.com/serve/MUIEAMVOJ6SgMjZISqkBOqsWeI4wYLjqQnt_xUHejO0-yEqpRFXt9In54eZxa6iU9Rdu7MTSLbKAbzlBM-MQt979AdFMYOt6Vnf9tikb5O0PIOjLu3I1Q96dWB6Q8pFvDaC-xLwp13BgSsqccaELRb4aWyJCzH48mMJReOT1TyE4omLD-vXIcNZdovB5CnbLqGfKDHeAKmDcoiDc"
+            frameborder="0"
+            scrolling="auto"
+            allowfullscreen
+            style={{
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+              maxWidth: "100%",
+            }}
+          ></iframe>
+        </div>
+      )}
     </div>
   )
 }
@@ -92,8 +118,8 @@ export const query = graphql`
     allImageSharp {
       edges {
         node {
-          fixed(width: 430, height: 430) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 430) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
