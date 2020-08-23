@@ -118,8 +118,7 @@ body, #gatsby-focus-wrapper, #___gatsby {
 
 .imgVote img:hover {
   cursor: pointer;
-  filter: brightness(0.8);
-  border: 1px solid rgba(0,0,0, .5);
+  border: 3px solid rgba(255,255,255, .5);
 }
 
 .imgVote img:active {
