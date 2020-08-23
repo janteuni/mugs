@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Img from "gatsby-image"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
 function shuffle(a) {
@@ -14,15 +14,6 @@ function shuffle(a) {
 const Home = ({ data }) => {
   const [step, setStep] = useState(0)
   const [imgs, setImgs] = useState([...data.allImageSharp.edges])
-
-  const imgContainer = {
-    position: "relative",
-    overflow: "hidden",
-    display: "inline-block",
-    maxWidth: "430px",
-    maxHeight: "430px",
-    width: "100%",
-  }
 
   const h2 = {
     color: "#a7a4a4",
@@ -71,19 +62,22 @@ const Home = ({ data }) => {
       )}
       {step > 0 && step < 11 && (
         <div>
-          {imgs
-            .filter((el, i) => i >= (step - 1) * 4 && i < step * 4)
-            .map((el, i) => (
-              <div
-                key={i}
-                style={imgContainer}
-                onClick={() => vote(el.node.fluid.src.split("/").pop())}
-                role="button"
-                tabIndex={0}
-              >
-                <Img fluid={el.node.fluid} />
-              </div>
-            ))}
+          <p style={{ textAlign: "right", paddingRight: "6px" }}>{step}/10</p>
+          <div>
+            {imgs
+              .filter((el, i) => i >= (step - 1) * 4 && i < step * 4)
+              .map((el, i) => (
+                <div
+                  key={i}
+                  className="imgVote"
+                  onClick={() => vote(el.node.fluid.src.split("/").pop())}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <Img fluid={el.node.fluid} />
+                </div>
+              ))}
+          </div>
         </div>
       )}
       {step === 11 && (
@@ -97,6 +91,7 @@ const Home = ({ data }) => {
           </h2>
           <iframe
             src="https://d8cb2fc7.sibforms.com/serve/MUIEAMVOJ6SgMjZISqkBOqsWeI4wYLjqQnt_xUHejO0-yEqpRFXt9In54eZxa6iU9Rdu7MTSLbKAbzlBM-MQt979AdFMYOt6Vnf9tikb5O0PIOjLu3I1Q96dWB6Q8pFvDaC-xLwp13BgSsqccaELRb4aWyJCzH48mMJReOT1TyE4omLD-vXIcNZdovB5CnbLqGfKDHeAKmDcoiDc"
+            title="newsletter"
             frameborder="0"
             scrolling="auto"
             allowfullscreen
@@ -109,6 +104,9 @@ const Home = ({ data }) => {
           ></iframe>
         </div>
       )}
+      <Link to="/collection" style={{ padding: "12px" }}>
+        Voir toute la collection
+      </Link>
     </div>
   )
 }
