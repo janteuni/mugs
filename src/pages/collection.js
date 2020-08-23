@@ -27,7 +27,7 @@ const Collection = ({ data }) => {
 
 export const query = graphql`
   query {
-    allImageSharp {
+    allImageSharp(sort: {order: ASC, fields: [original___src]}) {
       edges {
         node {
           fluid(maxWidth: 430) {
