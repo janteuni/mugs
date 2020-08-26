@@ -71,7 +71,7 @@ const Home = ({ data }) => {
             {"Votez pour votre tasse préférée en cliquant sur l'image."}
             <br />
             {
-              "Les tasses ayant reçus le plus de votes seront fabriquées en série et vous pourrez les commander en ligne :) "
+              "Les tasses ayant reçu le plus de votes seront fabriquées en série et vous pourrez les commander en ligne :) "
             }
           </h2>
           <button onClick={getStarted}>{"C'est parti !"}</button>
@@ -103,7 +103,7 @@ const Home = ({ data }) => {
             {"Merci beaucoup :)"}
             <br />
             {
-              "Pour être tenu au courant lorsque les tasses seront disponibles, inscrivez-vous avec votre email ici:"
+              "Pour être tenu au courant lorsque les tasses seront disponibles, inscrivez-vous ici:"
             }
           </h2>
           <iframe
