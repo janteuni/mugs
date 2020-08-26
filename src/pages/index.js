@@ -38,6 +38,16 @@ const Home = ({ data }) => {
     setStep(step + 1)
   }
 
+  const getStarted = () => {
+    let i = -1;
+    window.ga(function(tracker) {
+      i = 1;
+    });
+    console.log(i)
+    setImgs(shuffle(imgs))
+    setStep(step + 1)
+  }
+
   return (
     <div className="container full-height flex flex-column">
       <h1 style={h1}>Mugs Collection</h1>
@@ -50,12 +60,7 @@ const Home = ({ data }) => {
               "Les tasses ayant reçus le plus de votes seront fabriquées en série et vous pourrez les commander en ligne :) "
             }
           </h2>
-          <button
-            onClick={() => {
-              setImgs(shuffle(imgs))
-              setStep(step + 1)
-            }}
-          >
+          <button onClick={getStarted}>
             {"C'est parti !"}
           </button>
         </div>
