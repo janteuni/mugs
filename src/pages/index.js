@@ -39,18 +39,32 @@ const Home = ({ data }) => {
   }
 
   const getStarted = () => {
-    let i = -1;
-    window.ga(function(tracker) {
-      i = 1;
-    });
-    console.log(i)
+    let i = -1
+    window.ga(function (tracker) {
+      i = 1
+    })
     setImgs(shuffle(imgs))
-    setStep(step + 1)
+    setStep(i)
   }
 
   return (
     <div className="container full-height flex flex-column">
       <h1 style={h1}>Mugs Collection</h1>
+      {step === -1 && (
+        <div className="flex flex-column flex-grow flex-center align-center">
+          <h2 style={h2}>
+            Votez pour votre tasse préférée en cliquant sur l'image.
+            <br />
+            Les tasses ayant reçus le plus de votes seront fabriquées en série
+            et vous pourrez les commander en ligne :)
+          </h2>
+          <p style={{ paddingBottom: "12px" }}>
+            Il semble que votre navigateur bloque Google Analytics.
+            <br /> Veuillez autoriser Google Analytics pour pouvoir voter.
+          </p>
+          <button onClick={getStarted}>{"C'est parti !"}</button>
+        </div>
+      )}
       {step === 0 && (
         <div className="flex flex-column flex-grow flex-center align-center">
           <h2 style={h2}>
@@ -60,9 +74,7 @@ const Home = ({ data }) => {
               "Les tasses ayant reçus le plus de votes seront fabriquées en série et vous pourrez les commander en ligne :) "
             }
           </h2>
-          <button onClick={getStarted}>
-            {"C'est parti !"}
-          </button>
+          <button onClick={getStarted}>{"C'est parti !"}</button>
         </div>
       )}
       {step > 0 && step < 11 && (
