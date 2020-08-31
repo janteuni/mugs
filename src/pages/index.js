@@ -62,7 +62,7 @@ const Home = ({ data }) => {
             Il semble que votre navigateur bloque Google Analytics.
             <br /> Veuillez autoriser Google Analytics pour pouvoir voter.
           </p>
-          <button onClick={getStarted}>{"C'est parti !"}</button>
+          <button onClick={getStarted}>{"Je vote ➡️ "}</button>
         </div>
       )}
       {step === 0 && (
