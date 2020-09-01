@@ -64,7 +64,7 @@ const Home = ({ data }) => {
             Il semble que votre navigateur bloque Google Analytics.
             <br /> Veuillez autoriser Google Analytics pour pouvoir voter.
           </p>
-          <button onClick={getStarted}>{"Je vote ➡️ "}</button>
+          <button onClick={getStarted}>{"Je vote →"}</button>
         </div>
       )}
       {step === 0 && (
@@ -78,7 +78,7 @@ const Home = ({ data }) => {
               "Les tasses ayant reçu le plus de votes seront fabriquées en série et vous pourrez les commander en ligne :) "
             }
           </h2>
-          <button onClick={getStarted}>{"Je vote ➡️ "}</button>
+          <button onClick={getStarted}>{"Je vote →"}</button>
         </div>
       )}
       {step > 0 && step < 11 && (
