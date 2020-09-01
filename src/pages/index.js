@@ -53,7 +53,9 @@ const Home = ({ data }) => {
       {step === -1 && (
         <div className="flex flex-column flex-grow flex-center align-center">
           <h2 style={h2}>
-            Votez pour votre tasse préférée en cliquant sur une des quatres images qui apparaîtront.
+            Votez pour votre tasse préférée
+            <br />
+            en cliquant sur une des quatres images qui apparaîtront.
             <br />
             Les tasses ayant reçus le plus de votes seront fabriquées en série
             et vous pourrez les commander en ligne :)
@@ -68,7 +70,9 @@ const Home = ({ data }) => {
       {step === 0 && (
         <div className="flex flex-column flex-grow flex-center align-center">
           <h2 style={h2}>
-            {"Votez pour votre tasse préférée en cliquant sur une des quatres images qui apparaîtront."}
+            {"Votez pour votre tasse préférée"}
+            <br />
+            {"en cliquant sur une des quatres images qui apparaîtront."}
             <br />
             {
               "Les tasses ayant reçu le plus de votes seront fabriquées en série et vous pourrez les commander en ligne :) "
